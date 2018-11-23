@@ -51,6 +51,8 @@ public class Endereco {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
+	
+	//Ajuda a construir e a setar os valores do OBJETO.
 	public Endereco(String logradouro, String numero, String complemento, String bairro, String cidade, String estado,
 			String cep) {
 		super();
@@ -63,6 +65,7 @@ public class Endereco {
 		this.cep = cep;
 	}
 	
+	//Mostrar para ser chamado no TESTE e da a saída.
 	public void mostrar() {
 		System.out.println("ENDEREÇO.");
 		System.out.println("Logradouro: " + logradouro);

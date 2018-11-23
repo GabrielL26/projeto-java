@@ -37,6 +37,8 @@ public class Pedido {
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
+	
+	//Ajuda a construir e a setar os valores do OBJETO.
 	public Pedido(int numero, String dataEmissao, String formaDePagamento, double valorTotal, String situacao) {
 		super();
 		this.numero = numero;
@@ -46,6 +48,7 @@ public class Pedido {
 		this.situacao = situacao;
 	}
 	
+	//Mostrar para ser chamado no TESTE e da a saída.
 	public void mostrar() {
 		System.out.println("PEDIDO.");
 		System.out.println("Número: " + numero);

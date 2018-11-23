@@ -16,11 +16,15 @@ public class ItemDePedido {
 	public void setSubtotal(double subtotal) {
 		this.subtotal = subtotal;
 	}
+	
+	//Ajuda a construir e a setar os valores do OBJETO.
 	public ItemDePedido(int qtde, double subtotal) {
 		super();
 		this.qtde = qtde;
 		this.subtotal = subtotal;
 	}
+	
+	//Mostrar para ser chamado no TESTE e da a saída.
 	public void mostrar() {
 		System.out.println("ITEM DE PEDIDO.");
 		System.out.println("Quantidade: " + qtde);

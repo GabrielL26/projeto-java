@@ -51,6 +51,8 @@ public class Notebook {
 	public void setDataCadastro(String dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
+	
+	//Ajuda a construir e a setar os valores do OBJETO.
 	public Notebook(int numeroNote, String modelo, String descricao, int estoque, double precoUnitario, String figura,
 			String dataCadastro) {
 		super();
@@ -63,6 +65,7 @@ public class Notebook {
 		this.dataCadastro = dataCadastro;
 	}
 	
+	//Mostrar para ser chamado no TESTE e da a saída.
 	public void mostrar() {
 		System.out.println("NOTEBOOK.");
 		System.out.println("Número do Notebook: " + numeroNote);
