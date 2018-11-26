@@ -44,7 +44,10 @@ public class Usuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
+	public Usuario() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Usuario(int matricula, String login, String senha, String nome, String email, String telefone) {
 		super();
 		this.matricula = matricula;
