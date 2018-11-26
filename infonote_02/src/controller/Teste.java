@@ -7,14 +7,8 @@ public class Teste {
 	public static void main(String[] args) {
 		
 		//Objeto "Usuario" instanciado, com os atributos setados.
-		Usuario usuario = new Usuario();
-			usuario.setEmail("gabriel@gmail.com");
-			usuario.setLogin("gabriell26");
-			usuario.setMatricula(23156);
-			usuario.setNome("Gabriel");
-			usuario.setSenha("********");
-			usuario.setTelefone("4002-8922");
-			System.out.println(usuario.toString());
+		Usuario usuario = new Usuario(23156, "gabriell26", "********", "Gabriel", "gabriel@gmail.com", "4002-8922");
+			usuario.mostrar();
 				System.out.println("===================================================");
 		
 		
