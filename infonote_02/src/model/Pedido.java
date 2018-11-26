@@ -37,7 +37,10 @@ public class Pedido {
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
-	
+	public Pedido() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	//Ajuda a construir e a setar os valores do OBJETO.
 	public Pedido(int numero, String dataEmissao, String formaDePagamento, double valorTotal, String situacao) {
 		super();

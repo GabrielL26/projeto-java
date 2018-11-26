@@ -64,7 +64,10 @@ public class Notebook {
 		this.figura = figura;
 		this.dataCadastro = dataCadastro;
 	}
-	
+	public Notebook() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	//Mostrar para ser chamado no TESTE e da a saída.
 	public void mostrar() {
 		System.out.println("NOTEBOOK.");

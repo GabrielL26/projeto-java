@@ -2,6 +2,7 @@ package model;
 
 public class Endereco {
 
+
 	public String logradouro;
 	public String numero;
 	public String complemento;
@@ -50,6 +51,10 @@ public class Endereco {
 	}
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+	public Endereco() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	//Ajuda a construir e a setar os valores do OBJETO.
