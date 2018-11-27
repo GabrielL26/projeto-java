@@ -37,26 +37,12 @@ public class Pedido {
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
-	
-	//Ajuda a construir e a setar os valores do OBJETO.
-	public Pedido(int numero, String dataEmissao, String formaDePagamento, double valorTotal, String situacao) {
-		super();
-		this.numero = numero;
-		this.dataEmissao = dataEmissao;
-		this.formaDePagamento = formaDePagamento;
-		this.valorTotal = valorTotal;
-		this.situacao = situacao;
+	@Override
+	public String toString() {
+		return "Pedido [numero=" + numero + ", dataEmissao=" + dataEmissao + ", formaDePagamento=" + formaDePagamento
+				+ ", valorTotal=" + valorTotal + ", situacao=" + situacao + "]";
 	}
 	
-	//Mostrar para ser chamado no TESTE e da a saída.
-	public void mostrar() {
-		System.out.println("PEDIDO.");
-		System.out.println("Número: " + numero);
-		System.out.println("Data de Emissão: " + dataEmissao);
-		System.out.println("Forma de Pagamento: " + formaDePagamento);
-		System.out.println("Valor Total: " + valorTotal);
-		System.out.println("Situação: " + situacao);
-	}
 	
 	
 }

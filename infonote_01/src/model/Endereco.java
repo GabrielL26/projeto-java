@@ -51,29 +51,11 @@ public class Endereco {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	
-	//Ajuda a construir e a setar os valores do OBJETO.
-	public Endereco(String logradouro, String numero, String complemento, String bairro, String cidade, String estado,
-			String cep) {
-		super();
-		this.logradouro = logradouro;
-		this.numero = numero;
-		this.complemento = complemento;
-		this.bairro = bairro;
-		this.cidade = cidade;
-		this.estado = estado;
-		this.cep = cep;
+	@Override
+	public String toString() {
+		return "Endereco [logradouro=" + logradouro + ", numero=" + numero + ", complemento=" + complemento
+				+ ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", cep=" + cep + "]";
 	}
 	
-	//Mostrar para ser chamado no TESTE e da a saída.
-	public void mostrar() {
-		System.out.println("ENDEREÇO.");
-		System.out.println("Logradouro: " + logradouro);
-		System.out.println("Número: " + numero);
-		System.out.println("Complemento: " + complemento);
-		System.out.println("Bairro: " + bairro);
-		System.out.println("Cidade: " + cidade);
-		System.out.println("Estado: " + estado);
-		System.out.println("CEP: " + cep);
-	}
+	
 }
