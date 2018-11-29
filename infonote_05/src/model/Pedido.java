@@ -7,6 +7,11 @@ public class Pedido {
 	private String formaDePagamento;
 	private double valorTotal;
 	private String situacao;
+	
+	private Endereco enderecoEntrega;
+	private ItemDePedido itens[] = new ItemDePedido[10];
+	public int length;
+	
 	public int getNumero() {
 		return numero;
 	}
@@ -37,6 +42,16 @@ public class Pedido {
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
+	public Endereco getEnderecoEntrega() {
+		return enderecoEntrega;
+	}
+	public void setEnderecoEntrega(Endereco enderecoEntrega) {
+		this.enderecoEntrega = enderecoEntrega;
+	}
+	public ItemDePedido[] getItens() {
+		return itens;
+	}
+	
 	public Pedido() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -50,6 +65,15 @@ public class Pedido {
 		this.valorTotal = valorTotal;
 		this.situacao = situacao;
 	}
+	public boolean inserirItem(ItemDePedido item) {
+		for  (int i = 0; i < itens.length; i++) {
+			if (itens[i] == null) {
+				itens[i] = item;
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	//Mostrar para ser chamado no TESTE e da a saída.
 	public void mostrar() {
@@ -59,6 +83,12 @@ public class Pedido {
 		System.out.println("Forma de Pagamento: " + formaDePagamento);
 		System.out.println("Valor Total: " + valorTotal);
 		System.out.println("Situação: " + situacao);
+		System.out.println("\n\nItens do Pedido:\n");
+		for (int i = 0; i < itens.length; i++) {
+			if (itens[i] != null) {
+				itens[i].mostrar();
+			}
+		}
 	}
 	
 	

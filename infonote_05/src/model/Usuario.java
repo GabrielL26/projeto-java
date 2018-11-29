@@ -8,6 +8,10 @@ public class Usuario {
 	private String nome;
 	private String email;
 	private String telefone;
+	
+	private Endereco enderecos[] = new Endereco[10];
+	private Pedido pedidos[] = new Pedido[10];
+	
 	public int getMatricula() {
 		return matricula;
 	}
@@ -44,6 +48,13 @@ public class Usuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+	public Endereco[] getEnderecos() {
+		return enderecos;
+	}
+	public Pedido[] getPedidos() {
+		return pedidos;
+	}
+	
 	public Usuario() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -57,6 +68,27 @@ public class Usuario {
 		this.email = email;
 		this.telefone = telefone;
 	}
+	// Inserir o pedido no vetor
+	public boolean inserirPedido(Pedido pedido) {
+		for (int i = 0; i < pedido.length; i++) {
+			if (pedidos[i] == null) {
+				pedidos[i] = pedido;
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	// Inserir o endereco no vetor
+		public boolean inserirEndereco (Endereco end) {
+			for (int i = 0; i < enderecos.length; i++) {
+				if (enderecos[i] == null) {
+					enderecos[i] = end;
+					return true;
+				}
+			}
+			return false;
+		}
 	//Mostrar para ser chamado no TESTE e da a saída.
 			public void mostrar() {
 				System.out.println("USUARIO.");

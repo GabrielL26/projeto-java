@@ -9,6 +9,7 @@ public class Notebook {
 	private double precoUnitario;
 	private String figura;
 	private String dataCadastro;
+	
 	public int getNumeroNote() {
 		return numeroNote;
 	}
