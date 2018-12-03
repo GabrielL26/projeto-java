@@ -40,13 +40,17 @@ public class ItemDePedido {
 		this.subtotal = subtotal;
 		this.notebook = notebook;
 	}
-	
-	//Mostrar para ser chamado no TESTE e da a saída.
-	public void mostrar() {
-		System.out.println("ITEM DE PEDIDO.");
-		System.out.println("Quantidade: " + qtde);
-		System.out.println("SubTotal: " + subtotal);
+	@Override
+	public String toString() {
+		final String ENTER = "\n";
+		String retValue = "";
+		
+		retValue = "Informacoes sobre o Item de Pedido: " + ENTER + 
+		"Quantidade: " + qtde + ENTER + 
+		"Subtotal: " + subtotal + ENTER + 
+		"Notebook: " + notebook + ENTER;
+		
+		return retValue;
 	}
-	
 
 }

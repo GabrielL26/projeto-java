@@ -70,15 +70,20 @@ public class Endereco {
 		this.cep = cep;
 	}
 	
-	//Mostrar para ser chamado no TESTE e da a saída.
-	public void mostrar() {
-		System.out.println("ENDEREÇO.");
-		System.out.println("Logradouro: " + logradouro);
-		System.out.println("Número: " + numero);
-		System.out.println("Complemento: " + complemento);
-		System.out.println("Bairro: " + bairro);
-		System.out.println("Cidade: " + cidade);
-		System.out.println("Estado: " + estado);
-		System.out.println("CEP: " + cep);
+	@Override
+	public String toString() {
+		final String ENTER = "\n";
+		String retValue = "";
+		
+		retValue = "Informacoes sobre o Endereco: " + ENTER + 
+		"Logradouro: " + logradouro + ENTER + 
+		"Numero: " + numero + ENTER + 
+		"Complemento: " + complemento + ENTER + 
+		"Bairro: " + bairro + ENTER +
+		"Cidade: " + cidade + ENTER +
+		"Estado: " + estado + ENTER +
+		"CEP: " + cep + ENTER;
+		
+		return retValue;
 	}
 }

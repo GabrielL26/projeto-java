@@ -3,13 +3,14 @@ package controller;
 import model.ItemDePedido;
 import model.Notebook;
 import model.Pedido;
-import model.Usuario;
+import model.Cliente;
+import model.Endereco;
 import util.Teclado;
 
 
 public class InfoNote {
 	
-	Usuario user;
+	Cliente user;
 	Notebook notebooks[] = new Notebook[10];
 	Pedido pedido;
 	boolean logado = false;
@@ -116,26 +117,38 @@ public class InfoNote {
 			System.out.println("=================================================");
 			System.out.println("      InfoNote - Cadastro de Usuários.           ");
 			System.out.println("=================================================");
-			System.out.println("Matrícula: ");
-			System.out.println("Login: ");
-			System.out.println("Senha: ");
-			System.out.println("Nome: ");
-			System.out.println("E-mail: ");
-			System.out.println("Telefone: ");
 			
-			user = new Usuario(32155, "gabriell26", "1234", "Gabriel", "gabriel@gmail.com", "4002-8922");
+			String login = Teclado.lerTexto("login: ");
+			String senha = Teclado.lerTexto("Senha: ");
+			int tipo = 1;
+			String codigoCliente = Teclado.lerTexto("Codigo Cliente: ");
+			String nome = Teclado.lerTexto("Nome: ");
+			String email = Teclado.lerTexto("Email: ");
+			String telefone = Teclado.lerTexto("Telefone: ");
+			
+			String logradouro = Teclado.lerTexto("Logradouro: ");
+			String numero = Teclado.lerTexto("Numero: ");
+			String complemento = Teclado.lerTexto("Complemento: ");
+			String bairro = Teclado.lerTexto("Bairro: ");
+			String cidade = Teclado.lerTexto("Cidade: ");
+			String estado = Teclado.lerTexto("Estado: ");
+			String cep = Teclado.lerTexto("CEP: ");
+			
+			Endereco endereco = new Endereco(logradouro, numero, complemento, bairro, cidade, estado, cep);
+			
+			Cliente cli = new Cliente(login, senha, tipo, codigoCliente, nome, email, telefone, endereco);
 			
 			System.out.println("=================================================");
 			System.out.println("      Usuário Cadastrado Com Sucesso.            ");
 			System.out.println("=================================================");
-			
-			System.out.println(user);
+			System.out.println(cli);
+			System.out.println(endereco);
 		}
 		
 		public void buscarNotebook() {
 			for (int i = 0; i < notebooks.length; i++) {
 				if(notebooks[i] != null) {
-					System.out.println(notebooks[i].getNumeroNote()+"-----"+
+					System.out.println(notebooks[i].getserialNote()+"-----"+
 								notebooks[i].getModelo());
 				}
 			}
@@ -158,7 +171,7 @@ public class InfoNote {
 			Notebook aux = null;
 			for (int i = 0; i < notebooks.length; i++) {
 				if (notebooks[i] != null && 
-							numeroNote.equals(notebooks[i].getNumeroNote())) {
+							numeroNote.equals(notebooks[i].getserialNote())) {
 						aux = notebooks[i];
 				}
 			}
