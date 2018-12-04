@@ -47,7 +47,7 @@ public class InfoNote {
 					break;
 					
 				case 2:
-					info.cadastrarUsuario();
+					info.cadastrarCliente();
 					break;
 					
 				case 3:
@@ -113,7 +113,7 @@ public class InfoNote {
 				}
 		}
 		
-		public void cadastrarUsuario() {
+		public void cadastrarCliente() {
 			System.out.println("=================================================");
 			System.out.println("      InfoNote - Cadastro de Usuários.           ");
 			System.out.println("=================================================");
