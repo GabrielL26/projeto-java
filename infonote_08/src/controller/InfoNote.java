@@ -117,6 +117,8 @@ public class InfoNote {
 						System.out.println("Ususario ou senha inválido.");
 					}
 				}
+				else 
+				{
 					logado = funcionarioGlobal.validarLogin(login, senha);
 					if (logado) {
 						System.out.println("Login efetuado com sucesso!");
@@ -124,7 +126,7 @@ public class InfoNote {
 						System.out.println("Ususario ou senha inválido.");
 					}
 				}
-		
+		}
 		
 		public void cadastrarCliente() {
 			System.out.println("=================================================");
