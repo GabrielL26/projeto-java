@@ -5,6 +5,7 @@ import model.Notebook;
 import model.Pedido;
 import model.Cliente;
 import model.Endereco;
+import model.Funcionario;
 import util.Teclado;
 
 
@@ -13,6 +14,10 @@ public class InfoNote {
 	Cliente cliente;
 	Notebook notebooks[] = new Notebook[10];
 	Pedido pedido;
+	
+	private static Cliente clienteGlobal = null;
+	private static Funcionario funcionarioGlobal =null;
+	
 	boolean logado = false;
 	
 		public InfoNote() {
@@ -104,8 +109,16 @@ public class InfoNote {
 			String login,  senha;
 			login = Teclado.lerTexto("Digite o login: ");
 			senha = Teclado.lerTexto("Digite a senha: ");
-				if (cliente != null) {
-					logado = cliente.validarLogin(login, senha);
+				if (clienteGlobal != null) {
+					logado = clienteGlobal.validarLogin(login, senha);
+					if (logado) {
+						System.out.println("Login efetuado com sucesso!");
+					} else {
+						System.out.println("Ususario ou senha inválido.");
+					}
+				}
+				if (funcionarioGlobal != null) {
+					logado = funcionarioGlobal.validarLogin(login, senha);
 					if (logado) {
 						System.out.println("Login efetuado com sucesso!");
 					} else {
@@ -137,12 +150,13 @@ public class InfoNote {
 			
 			Endereco endereco = new Endereco(logradouro, numero, complemento, bairro, cidade, estado, cep);
 			
-			Cliente cli = new Cliente(login, senha, tipo, codigoCliente, nome, email, telefone, endereco);
+			Cliente cliente = new Cliente(login, senha, tipo, codigoCliente, nome, email, telefone, endereco);
+			clienteGlobal = cliente ;
 			
 			System.out.println("=================================================");
 			System.out.println("      Usuário Cadastrado Com Sucesso.            ");
 			System.out.println("=================================================");
-			System.out.println(cli);
+			System.out.println(cliente);
 			System.out.println(endereco);
 		}
 		
