@@ -10,7 +10,7 @@ import util.Teclado;
 
 public class InfoNote {
 	
-	Cliente user;
+	Cliente cliente;
 	Notebook notebooks[] = new Notebook[10];
 	Pedido pedido;
 	boolean logado = false;
@@ -104,12 +104,13 @@ public class InfoNote {
 			String login,  senha;
 			login = Teclado.lerTexto("Digite o login: ");
 			senha = Teclado.lerTexto("Digite a senha: ");
-				if (login.equals("admin") && senha.equals("1234")) {
-					System.out.println("Login efetuado com sucesso.");
-					logado = true;
-				}else {
-					System.out.println("Login ou Senha inválido.");
-					efetuarLogin();
+				if (cliente != null) {
+					logado = cliente.validarLogin(login, senha);
+					if (logado) {
+						System.out.println("Login efetuado com sucesso!");
+					} else {
+						System.out.println("Ususario ou senha inválido.");
+					}
 				}
 		}
 		

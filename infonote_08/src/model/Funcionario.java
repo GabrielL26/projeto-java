@@ -1,6 +1,6 @@
 package model;
 
-public class Funcionario extends Usuario{
+public class Funcionario extends Usuario implements IUsuario {
 	
 	private String matricula;
 
@@ -20,6 +20,15 @@ public class Funcionario extends Usuario{
 	public Funcionario(String login, String senha, int tipo, String matricula) {
 		super(login, senha, tipo);
 		this.matricula = matricula;
+	}
+	
+	@Override
+	public boolean validarLogin(String login, String senha) {
+		if(getLogin().equals(login) && getSenha().equals(senha)) {
+			return true;
+		}
+		
+		return false;
 	}
 
 }

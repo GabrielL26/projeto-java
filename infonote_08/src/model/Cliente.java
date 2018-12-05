@@ -1,7 +1,7 @@
 package model;
 
 
-public class Cliente extends Usuario {
+public class Cliente extends Usuario implements IUsuario {
 	
 	private String codigoCliente;
 	private String nome;
@@ -95,6 +95,15 @@ public class Cliente extends Usuario {
 		"Endereco: " + enderecos[0];
 		
 		return retValue;
+	}
+	
+	@Override
+	public boolean validarLogin(String login, String senha) {
+		if(getLogin().equals(login) && getSenha().equals(senha)) {
+			return true;
+		}
+		
+		return false;
 	}
 	
 }
