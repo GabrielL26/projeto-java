@@ -97,6 +97,18 @@ public class Cliente extends Usuario implements IUsuario {
 		return retValue;
 	}
 	
+	public String getNomeInvertido() {
+		String nome, sobrenome;
+		
+		int posicao = getNome().indexOf(" ");
+		nome = getNome().substring(0, posicao);
+		
+		posicao = getNome().lastIndexOf(" ");
+		sobrenome = getNome().substring(posicao + 1);
+		
+		return sobrenome + ", " + nome;
+	}
+	
 	@Override
 	public boolean validarLogin(String login, String senha) {
 		if(getLogin().equals(login) && getSenha().equals(senha)) {

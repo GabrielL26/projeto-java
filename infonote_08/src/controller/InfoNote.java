@@ -6,7 +6,6 @@ import model.Pedido;
 import model.Cliente;
 import model.Endereco;
 import model.Funcionario;
-import util.GerarSenha;
 import util.Teclado;
 
 
@@ -95,10 +94,6 @@ public class InfoNote {
 		public void mostrarMenu() {
 			System.out.println("=================================================");
 			System.out.println("      InfoNote - Se não é Info não vendemos.     ");
-			
-			if (logado == true) {
-				System.out.println("Seja bem vindo, " + cliente.getNomeInvertido());
-			}
 			System.out.println("=================================================");
 			System.out.println("1 - Login");
 			System.out.println("2 - Cadastrar Cliente");
@@ -153,11 +148,6 @@ public class InfoNote {
 			String cidade = Teclado.lerTexto("Cidade: ");
 			String estado = Teclado.lerTexto("Estado: ");
 			String cep = Teclado.lerTexto("CEP: ");
-			
-			if (senha.equals("") || senha == null) {
-				senha = GerarSenha.gerarSenha();
-				System.out.println("Senha gerada: " + senha);
-			}
 			
 			Endereco endereco = new Endereco(logradouro, numero, complemento, bairro, cidade, estado, cep);
 			
