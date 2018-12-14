@@ -98,7 +98,7 @@ public class InfoNote {
 			
 			
 			if (logado == true) {
-				System.out.println("Seja bem vindo, " + cliente.getNomeInvertido());
+				System.out.println("Seja bem vindo, " + clienteGlobal.getNomeInvertido());
 			}
 			System.out.println("=================================================");
 			System.out.println("1 - Login");
@@ -141,6 +141,10 @@ public class InfoNote {
 			
 			String login = Teclado.lerTexto("login: ");
 			String senha = Teclado.lerTexto("Senha: ");
+			if (senha.equals("") || senha == null) {
+				senha = GerarSenha.gerarSenha();
+				System.out.println("Senha gerada: " + senha);
+			}
 			int tipo = 1;
 			String codigoCliente = Teclado.lerTexto("Codigo Cliente: ");
 			String nome = Teclado.lerTexto("Nome: ");
@@ -156,10 +160,6 @@ public class InfoNote {
 			String cep = Teclado.lerTexto("CEP: ");
 			
 
-			if (senha.equals("") || senha == null) {
-				senha = GerarSenha.gerarSenha();
-				System.out.println("Senha gerada: " + senha);
-			}
 			
 			Endereco endereco = new Endereco(logradouro, numero, complemento, bairro, cidade, estado, cep);
 			
