@@ -1,7 +1,9 @@
 package model;
 
+import model.DAO.FuncionarioDAO;
+
 public class Funcionario extends Usuario implements IUsuario {
-	
+
 	private String matricula;
 
 	public String getMatricula() {
@@ -14,20 +16,20 @@ public class Funcionario extends Usuario implements IUsuario {
 
 	public Funcionario() {
 		super();
-	
+
 	}
 
 	public Funcionario(String login, String senha, int tipo, String matricula) {
 		super(login, senha, tipo);
 		this.matricula = matricula;
 	}
-	
+
 	@Override
 	public boolean validarLogin(String login, String senha) {
-		if(getLogin().equals(login) && getSenha().equals(senha)) {
+		Funcionario funcionario = FuncionarioDAO.buscarPorLoginSenha(login, senha);
+		if (funcionario != null) {
 			return true;
 		}
-		
 		return false;
 	}
 
