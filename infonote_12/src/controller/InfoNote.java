@@ -38,7 +38,7 @@ public class InfoNote {
 	private static final int AJUDA = 8;
 	private static final int SAIR = 9;
 
-	public InfoNote() throws Exception {
+	public InfoNote() {
 		notebooks[0] = new Notebook(1, "Negativo N22BR", "CPU Intel Core 2 Duo, Memória 2 GB, HD 250 GB", 6, 1200.00,
 				"img\\\\n22br.jpg", "19/05/2011");
 
@@ -61,7 +61,7 @@ public class InfoNote {
 		ajuda = new Ajuda(config.getArquivoAjuda());
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		InfoNote info = new InfoNote();
 
 		int opcao = SAIR;
