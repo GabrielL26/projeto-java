@@ -1,5 +1,8 @@
 package model;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Notebook {
 	
 	private int serialNote;
@@ -75,12 +78,16 @@ public class Notebook {
 		final String ENTER = "\n";
 		String retValue = "";
 		
+		Locale local = new Locale("pt", "BR");
+		
 		retValue = "Informacoes sobre o Notebook: " + ENTER + 
 		"Numero do Notebook: " + serialNote + ENTER + 
 		"Modelo: " + modelo + ENTER + 
 		"Descricao: " + descricao + ENTER + 
 		"Estoque: " + estoque + ENTER +
-		"Preco Unitario: " + precoUnitario + ENTER +
+		"Preco Unitario: " + 
+				NumberFormat.getCurrencyInstance(local).format(this.precoUnitario) +
+				ENTER + 
 		"Figura: " + figura + ENTER +
 		"Data de Cadastro: " + dataCadastro + ENTER;
 		

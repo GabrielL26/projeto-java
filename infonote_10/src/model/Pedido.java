@@ -1,5 +1,7 @@
 package model;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class Pedido {
 
@@ -81,11 +83,15 @@ public class Pedido {
 		final String ENTER = "\n";
 		String retValue = "";
 		
+		Locale local = new Locale("pt", "BR");
+		
 		retValue = "Informacoes sobre Pedido: " + ENTER + 
 		"Numero do Pedido: " + numeroPedido + ENTER + 
 		"Data de Emissao: " + dataEmissao + ENTER + 
 		"Forma de pagamento: " + formaDePagamento + ENTER + 
-		"Valor Total: " + valorTotal + ENTER +
+		"Valor Total: " + 
+				NumberFormat.getCurrencyInstance(local).format(this.valorTotal) +
+				ENTER +
 		"Situacao: " + situacao + ENTER +
 		"Endereco de Entrega: " + ENTER +
 		"Itens: ";
