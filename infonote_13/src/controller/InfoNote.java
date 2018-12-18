@@ -7,6 +7,7 @@ import model.Usuario;
 import model.DAO.ClienteDAO;
 import model.DAO.EnderecoDAO;
 import model.DAO.FuncionarioDAO;
+import model.DAO.NotebookDAO;
 import model.DAO.UsuarioDAO;
 
 import java.text.DateFormat;
@@ -27,7 +28,6 @@ public class InfoNote {
 	Notebook notebooks[] = new Notebook[10];
 	Pedido pedido;
 	private static Cliente clienteGlobal = null;
-	private static Funcionario funcionarioGlobal = null;
 	private static final int AREA_ADMINISTRATIVA = 9;
 	private static final int SAIR = 10;
 	boolean logado = false; // indica se o usuário está logado.
@@ -60,6 +60,7 @@ public class InfoNote {
 
 		notebooks[4] = new Notebook(5, "BradescoTech BD22BR", "CPU AMD Phenon II, Memória 4 GB, HD 500 GB", 2, 1900.00,
 				"img\\bd22br.jpg", "10/06/2011");
+		
 
 		// Cria objeto de configurações
 		config = new Configurador();
@@ -242,6 +243,8 @@ public class InfoNote {
 		} while (opcao != 5);
 	}
 
+
+
 	public void cadastrarCliente() {
 		System.out.println("=================================================");
 		System.out.println("      InfoNote - Cadastro de Usuários.           ");
@@ -283,17 +286,77 @@ public class InfoNote {
 		System.out.println(cliente);
 		System.out.println(endereco);
 	}
+	
+	public void cadastrarNotebook() {
+		System.out.println("=================================");
+		System.out.println("        Cadastrar Notebook       ");
+		System.out.println("=================================");
+		
+		int serialNote = Teclado.lerInt("Numero do Notebook: ");
+		String modelo = Teclado.lerTexto("Modelo: ");
+		String descricao = Teclado.lerTexto("Descrição: ");
+		int estoque = Teclado.lerInt("estoque: ");
+		double precoUnitario = Teclado.lerDouble("Preço Unitario: ");
+		String figura = Teclado.lerTexto("Figura: ");
+		String dataCadastro = Teclado.lerTexto("Data do Cadastro: ");
 
+		Notebook notebook = NotebookDAO.inserir(serialNote, modelo, descricao, estoque, precoUnitario, figura, dataCadastro);
+
+		System.out.println(notebook);
+	}
+	
 	public void buscarNotebook() {
+		Notebook[] notebooks = NotebookDAO.buscarTodos();
+
 		for (int i = 0; i < notebooks.length; i++) {
 			if (notebooks[i] != null) {
-				System.out.println(notebooks[i].getserialNote() + "-----" + notebooks[i].getModelo());
+				System.out.println(notebooks[i].getserialNote() + "-----" + notebooks[i].getModelo() + "-----"
+						+ notebooks[i].getDescricao() + "-----" + notebooks[i].getEstoque()+ "-----" + notebooks[i].getPrecoUnitario()
+						+ "-----" + notebooks[i].getFigura()+ "-----" + notebooks[i].getDataCadastro());
 			}
 		}
+	}
+	
+	private void mostrarNotebooks() {
+			
+	}
+	
+	public void editarNotebook() {
+		System.out.println("=================================");
+		System.out.println("         Editar Notebook         ");
+		System.out.println("=================================");
+		
+		String descricao = Teclado.lerTexto("Editar Descrição: ");
+		int estoque = Teclado.lerInt("Editar Estoque: ");
+		double precoUnitario = Teclado.lerDouble("Editar Preço Unitário: ");
+		String figura = Teclado.lerTexto("Editar Figura: ");
+		String dataCadastro = Teclado.lerTexto("Editar Data de Cadastro: ");
+		
+		NotebookDAO.atualizar(descricao, estoque, precoUnitario, figura, dataCadastro);
+		
+		System.out.println("Notebook editado com sucesso");
+		
 	}
 
 	public void manterCarrinho() {
 		System.out.println("manterCarrinho - Em Construção");
+	}
+	
+	public void excluirNotebook() {
+		System.out.println("=================================");
+		System.out.println("        Excluir Notebook         ");
+		System.out.println("=================================");
+		int serialNote = Teclado.lerInt("Digite o numero do Notebook a ser apagado: ");
+		String modelo = Teclado.lerTexto("Excluir modelo: ");
+		String descricao = Teclado.lerTexto("Excluir Descrição: ");
+		int estoque = Teclado.lerInt("Excluir Estoque: ");
+		double precoUnitario = Teclado.lerDouble("Excluir Preço Unitário: ");
+		String figura = Teclado.lerTexto("Excluir Figura: ");
+		String dataCadastro = Teclado.lerTexto("Excluir Data de Cadastro: ");
+		
+		NotebookDAO.excluir(serialNote, modelo, descricao, estoque, precoUnitario, figura, dataCadastro);
+		
+		System.out.println("Notebook apagado com sucesso");
 	}
 
 	@SuppressWarnings("unlikely-arg-type")
