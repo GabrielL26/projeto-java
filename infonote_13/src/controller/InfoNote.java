@@ -46,19 +46,19 @@ public class InfoNote {
 	private static final int AJUDA = 8;
 
 	public InfoNote() {
-		notebooks[0] = new Notebook(1, "Negativo N22BR", "CPU Intel Core 2 Duo, Memória 2 GB, HD 250 GB", 6, 1200.00,
+		notebooks[0] = new Notebook("1", "Negativo N22BR", "CPU Intel Core 2 Duo, Memória 2 GB, HD 250 GB", 6, 1200.00,
 				"img\\\\n22br.jpg", "19/05/2011");
 
-		notebooks[1] = new Notebook(2, "Bell B55BR", "CPU Intel I3, Memória 4 GB, HD 500 GB", 3, 1800.00,
+		notebooks[1] = new Notebook("2", "Bell B55BR", "CPU Intel I3, Memória 4 GB, HD 500 GB", 3, 1800.00,
 				"img\\b55br.jpg", "20/05/2011");
 
-		notebooks[2] = new Notebook(3, "Pompaq P41BR", "CPU Intel I3, Memória 3 GB, HD 320 GB", 1, 1600.00,
+		notebooks[2] = new Notebook("3", "Pompaq P41BR", "CPU Intel I3, Memória 3 GB, HD 320 GB", 1, 1600.00,
 				"img\\p41br.jpg", "21/05/2011");
 
-		notebooks[3] = new Notebook(4, "CCF CR71CH", "CPU Intel Dual Core, Memória 2 GB, HD 160 GB", 5, 1100.00,
+		notebooks[3] = new Notebook("4", "CCF CR71CH", "CPU Intel Dual Core, Memória 2 GB, HD 160 GB", 5, 1100.00,
 				"img\\cr71ch.jpg", "10/06/2011");
 
-		notebooks[4] = new Notebook(5, "BradescoTech BD22BR", "CPU AMD Phenon II, Memória 4 GB, HD 500 GB", 2, 1900.00,
+		notebooks[4] = new Notebook("5", "BradescoTech BD22BR", "CPU AMD Phenon II, Memória 4 GB, HD 500 GB", 2, 1900.00,
 				"img\\bd22br.jpg", "10/06/2011");
 		
 
@@ -292,7 +292,7 @@ public class InfoNote {
 		System.out.println("        Cadastrar Notebook       ");
 		System.out.println("=================================");
 		
-		int serialNote = Teclado.lerInt("Numero do Notebook: ");
+		String serialNote = Teclado.lerTexto("Numero do Notebook: ");
 		String modelo = Teclado.lerTexto("Modelo: ");
 		String descricao = Teclado.lerTexto("Descrição: ");
 		int estoque = Teclado.lerInt("estoque: ");
@@ -359,7 +359,6 @@ public class InfoNote {
 		System.out.println("Notebook apagado com sucesso");
 	}
 
-	@SuppressWarnings("unlikely-arg-type")
 	public void inserirNotebook() {
 		// Lê o notebook escolhido do teclado
 		String numeroNote = Teclado.lerTexto("Informe o número do notebook" + " para compra: ");

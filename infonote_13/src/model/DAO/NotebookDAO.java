@@ -20,7 +20,7 @@ public class NotebookDAO {
 	private static int estoque;
 	private static double precoUnitario;
 	
-	public static Notebook inserir(int serialNote, String modelo, String descricao,
+	public static Notebook inserir(String serialNote, String modelo, String descricao,
 			int estoque, Double precoUnitario, String figura, String dataCadastro) {
 		Notebook notebook = null;
 		NotebookDAO noteDAO = new NotebookDAO();
@@ -37,7 +37,7 @@ public class NotebookDAO {
 			// Preparar o comando para ser executado
 			PreparedStatement comando = con.prepareStatement(sql);
 			
-			comando.setInt(1,serialNote);
+			comando.setString(1,serialNote);
 			comando.setString(2,modelo);
 			comando.setString(3,descricao);
 			comando.setInt(4,estoque);
@@ -91,7 +91,7 @@ public class NotebookDAO {
 			int i = 0;
 			while (rs.next()) {
 				Notebooks[i++] = new Notebook(
-						rs.getInt(serialNote),
+						rs.getString(serialNote),
 						rs.getString("modelo"),
 						rs.getString("descricao"),
 						rs.getInt(estoque),
