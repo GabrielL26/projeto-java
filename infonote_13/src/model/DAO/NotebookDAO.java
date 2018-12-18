@@ -12,6 +12,10 @@ import util.Conexao;
 public class NotebookDAO {
 	Notebook notebooks[] = new Notebook[10];
 	Pedido pedido;
+	private String url;
+	private String driver;
+	private String login;
+	private String senha;
 	private static int serialNote;
 	private static int estoque;
 	private static double precoUnitario;
@@ -19,13 +23,13 @@ public class NotebookDAO {
 	public static Notebook inserir(int serialNote, String modelo, String descricao,
 			int estoque, Double precoUnitario, String figura, String dataCadastro) {
 		Notebook notebook = null;
+		NotebookDAO noteDAO = new NotebookDAO();
 		try {
 			// Criação do insert
 			String sql = "insert into contato (nome, email, mensagem) values (?,?,?)";
 			
 			// Obter a conexao com o banco de dados
-			Conexao conex = new Conexao("jdbc:mysql://localhost:3306/infonote?useTimezone=true&serverTimezone=UTC",
-					"com.mysql.cj.jdbc.Driver","gabriel","1234");
+			Conexao conex = new Conexao(noteDAO.url, noteDAO.driver, noteDAO.login, noteDAO.senha);
 			
 			// Abrir a conexao
 			Connection con = conex.obterConexao();
