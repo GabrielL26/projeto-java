@@ -5,6 +5,7 @@ import java.util.Locale;
 
 public class Notebook {
 	
+	private int id_notebook; 
 	private String serialNote;
 	private String modelo;
 	private String descricao;
@@ -13,6 +14,12 @@ public class Notebook {
 	private String figura;
 	private String dataCadastro;
 	
+	public int getId_notebook() {
+		return id_notebook;
+	}
+	public void setId_notebook(int id_notebook) {
+		this.id_notebook = id_notebook;
+	}
 	public String getserialNote() {
 		return serialNote;
 	}

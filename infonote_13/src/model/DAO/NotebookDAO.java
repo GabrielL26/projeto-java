@@ -10,8 +10,7 @@ import util.Conexao;
 import util.Configurador;
 
 public class NotebookDAO {
-	private static String estoque;
-	private static int precoUnitario;
+	
 	Configurador config = new Configurador();
 	String url;
 	String driver;
@@ -101,8 +100,8 @@ public class NotebookDAO {
 						rs.getString("serialNote"),
 						rs.getString("modelo"),
 						rs.getString("descricao"),
-						rs.getInt(estoque),
-						rs.getDouble(precoUnitario),
+						rs.getInt("estoque"),
+						rs.getDouble("precoUnitario"),
 						rs.getString("figura"),
 						rs.getString("dataCadastro"));
 			}
@@ -117,8 +116,7 @@ public class NotebookDAO {
 		return Notebooks;
 	}
 	
-	public static Notebook excluir(int serialNote, String modelo, String descricao, 
-			int estoque, Double precoUnitario, String figura, String dataCadastro) {
+	public static Notebook excluir(int id_notebook) {
 		
 		Notebook Notebook = null;
 		NotebookDAO noteDAO = new NotebookDAO();
@@ -136,13 +134,7 @@ public class NotebookDAO {
 			// Preparar o comando para ser executado
 			PreparedStatement comando = con.prepareStatement(sql);
 			
-			comando.setInt(1, serialNote);
-			comando.setString(2, modelo);
-			comando.setString(3, descricao);
-			comando.setInt(4, estoque);
-			comando.setDouble(5, precoUnitario);
-			comando.setString(6, figura);
-			comando.setString(7, dataCadastro);
+			comando.setInt(1, id_notebook);
 			comando.executeUpdate();
 			
 			// Comando executado
@@ -154,7 +146,7 @@ public class NotebookDAO {
 		return Notebook;
 	}
 	
-	public static Notebook atualizar(String descricao, int estoque, Double precoUnitario,
+	public static Notebook atualizar(int id_notebook, String descricao, int estoque, Double precoUnitario,
 			String figura, String dataCadastro) {
 		
 		Notebook Notebook = null;
@@ -173,11 +165,12 @@ public class NotebookDAO {
 			// Preparar o comando para ser executado
 			PreparedStatement comando = con.prepareStatement(sql);
 			
-			comando.setString(1, descricao);
-			comando.setInt(2, estoque);
-			comando.setDouble(3, precoUnitario);
-			comando.setString(4, figura);
-			comando.setString(5, dataCadastro);
+			comando.setInt(1, id_notebook);
+			comando.setString(2, descricao);
+			comando.setInt(3, estoque);
+			comando.setDouble(4, precoUnitario);
+			comando.setString(5, figura);
+			comando.setString(6, dataCadastro);
 			
 			// Comando executado
 			comando.executeUpdate();

@@ -327,13 +327,14 @@ public class InfoNote {
 		System.out.println("         Editar Notebook         ");
 		System.out.println("=================================");
 		
+		int id_notebook = Teclado.lerInt("Editar Id_notebook: ");
 		String descricao = Teclado.lerTexto("Editar Descrição: ");
 		int estoque = Teclado.lerInt("Editar Estoque: ");
 		double precoUnitario = Teclado.lerDouble("Editar Preço Unitário: ");
 		String figura = Teclado.lerTexto("Editar Figura: ");
 		String dataCadastro = Teclado.lerTexto("Editar Data de Cadastro: ");
 		
-		NotebookDAO.atualizar(descricao, estoque, precoUnitario, figura, dataCadastro);
+		NotebookDAO.atualizar(id_notebook, descricao, estoque, precoUnitario, figura, dataCadastro);
 		
 		System.out.println("Notebook editado com sucesso");
 		
@@ -347,15 +348,10 @@ public class InfoNote {
 		System.out.println("=================================");
 		System.out.println("        Excluir Notebook         ");
 		System.out.println("=================================");
-		int serialNote = Teclado.lerInt("Digite o numero do Notebook a ser apagado: ");
-		String modelo = Teclado.lerTexto("Excluir modelo: ");
-		String descricao = Teclado.lerTexto("Excluir Descrição: ");
-		int estoque = Teclado.lerInt("Excluir Estoque: ");
-		double precoUnitario = Teclado.lerDouble("Excluir Preço Unitário: ");
-		String figura = Teclado.lerTexto("Excluir Figura: ");
-		String dataCadastro = Teclado.lerTexto("Excluir Data de Cadastro: ");
 		
-		NotebookDAO.excluir(serialNote, modelo, descricao, estoque, precoUnitario, figura, dataCadastro);
+		int id_notebook = Teclado.lerInt("Excluir Id_notebook: ");
+		
+		NotebookDAO.excluir(id_notebook);
 		
 		System.out.println("Notebook apagado com sucesso");
 	}
