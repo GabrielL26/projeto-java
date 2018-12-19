@@ -24,18 +24,24 @@ public class EnderecoDAO {
 
 	public static Endereco inserir(String logradouro, String numero, String complemento, String bairro, String cidade,
 			String estado, String cep, String codigoCliente) {
+		
 		Endereco endereco = null;
 		EnderecoDAO endDAO = new EnderecoDAO();
+		
 		try {
 			// Criação do insert
 			String sql = "insert into endereco " + "(logradouro, numero, complemento, bairro, cidade, "
 					+ "estado, cep, fkcodigocliente)" + " values (?,?,?,?,?,?,?,?)";
+			
 			// Obter a conexão com o banco de dados
 			Conexao conex = new Conexao(endDAO.url, endDAO.driver, endDAO.login, endDAO.senha);
+			
 			// Abrir a conexão
 			Connection con = conex.obterConexao();
+			
 			// Preparar o comando para ser executado
 			PreparedStatement comando = con.prepareStatement(sql);
+			
 			comando.setString(1, logradouro);
 			comando.setString(2, numero);
 			comando.setString(3, complemento);
@@ -47,6 +53,7 @@ public class EnderecoDAO {
 			// não é fkcodigocliente, porque aqui a referência é da Classe
 			// Comando executado
 			comando.executeUpdate();
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

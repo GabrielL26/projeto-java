@@ -6,27 +6,34 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import model.Notebook;
-import model.Pedido;
 import util.Conexao;
+import util.Configurador;
 
 public class NotebookDAO {
-	Notebook notebooks[] = new Notebook[10];
-	Pedido pedido;
-	private String url;
-	private String driver;
-	private String login;
-	private String senha;
-	private static int serialNote;
-	private static int estoque;
-	private static double precoUnitario;
+	private static String estoque;
+	private static int precoUnitario;
+	Configurador config = new Configurador();
+	String url;
+	String driver;
+	String login;
+	String senha;
+	
+	public NotebookDAO() {
+		url = config.getUrl();
+		driver = config.getDriver();
+		login = config.getLogin();
+		senha = config.getSenha();
+	}
 	
 	public static Notebook inserir(String serialNote, String modelo, String descricao,
 			int estoque, Double precoUnitario, String figura, String dataCadastro) {
+		
 		Notebook notebook = null;
 		NotebookDAO noteDAO = new NotebookDAO();
+		
 		try {
 			// Criação do insert
-			String sql = "insert into contato (nome, email, mensagem) values (?,?,?)";
+			String sql = "insert into contato (serialNote, modelo, descricao, estoque, precoUnitario, figura, dataCadastro) values (?,?,?)";
 			
 			// Obter a conexao com o banco de dados
 			Conexao conex = new Conexao(noteDAO.url, noteDAO.driver, noteDAO.login, noteDAO.senha);
@@ -58,14 +65,14 @@ public class NotebookDAO {
 	
 	public static Notebook[] buscarTodos() {
 		Notebook[] Notebooks = null;
+		NotebookDAO noteDAO = new NotebookDAO();
 		
 		try {
 			//Criacao do select
 			String sql = "Select * from Notebook";
 			
 			// Obter a conexao com o banco de dados
-			Conexao conex = new Conexao ("jdbc:mysql://localhost:3306/infonote?useTimezone=true&serverTimezone=UTC",
-					"com.mysql.cj.jdbc.Driver","gabriel","1234");
+			Conexao conex = new Conexao (noteDAO.url, noteDAO.driver, noteDAO.login, noteDAO.senha);
 			
 			Connection con = conex.obterConexao();
 			
@@ -91,11 +98,11 @@ public class NotebookDAO {
 			int i = 0;
 			while (rs.next()) {
 				Notebooks[i++] = new Notebook(
-						rs.getString(serialNote),
+						rs.getString("serialNote"),
 						rs.getString("modelo"),
 						rs.getString("descricao"),
 						rs.getInt(estoque),
-						rs.getDouble((int) precoUnitario),
+						rs.getDouble(precoUnitario),
 						rs.getString("figura"),
 						rs.getString("dataCadastro"));
 			}
@@ -112,14 +119,16 @@ public class NotebookDAO {
 	
 	public static Notebook excluir(int serialNote, String modelo, String descricao, 
 			int estoque, Double precoUnitario, String figura, String dataCadastro) {
+		
 		Notebook Notebook = null;
+		NotebookDAO noteDAO = new NotebookDAO();
+		
 		try {
 			// Criação do insert
 			String sql = "delete from Notebook where id =?";
 			
 			// Obter a conexao com o banco de dados
-			Conexao conex = new Conexao("jdbc:mysql://localhost:3306/infonote?useTimezone=true&serverTimezone=UTC",
-					"com.mysql.cj.jdbc.Driver","gabriel","1234");
+			Conexao conex = new Conexao(noteDAO.url, noteDAO.driver, noteDAO.login, noteDAO.senha);
 			
 			// Abrir a conexao
 			Connection con = conex.obterConexao();
@@ -147,14 +156,16 @@ public class NotebookDAO {
 	
 	public static Notebook atualizar(String descricao, int estoque, Double precoUnitario,
 			String figura, String dataCadastro) {
+		
 		Notebook Notebook = null;
+		NotebookDAO noteDAO = new NotebookDAO();
+		
 		try {
 			// Criação do insert
 			String sql = "update Notebook set mensagem = ? where id = ? ";
 			
 			// Obter a conexao com o banco de dados
-			Conexao conex = new Conexao("jdbc:mysql://localhost:3306/infonote?useTimezone=true&serverTimezone=UTC",
-					"com.mysql.cj.jdbc.Driver","gabriel","1234");
+			Conexao conex = new Conexao(noteDAO.url, noteDAO.driver, noteDAO.login, noteDAO.senha);
 			
 			// Abrir a conexao
 			Connection con = conex.obterConexao();

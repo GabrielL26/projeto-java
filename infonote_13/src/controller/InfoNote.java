@@ -192,6 +192,49 @@ public class InfoNote {
 		}
 	}
 
+	
+	public void cadastrarCliente() {
+		System.out.println("=================================================");
+		System.out.println("      InfoNote - Cadastro de Usuários.           ");
+		System.out.println("=================================================");
+		
+		String login = Teclado.lerTexto("login: ");
+		String senha = Teclado.lerTexto("Senha: ");
+		if (senha.equals("") || senha == null) {
+			senha = GerarSenha.gerarSenha();
+			System.out.println("Senha gerada: " + senha);
+		}
+		int tipo = 0; // por que todo cliente é tipo zero
+		String codigoCliente = Teclado.lerTexto("Codigo Cliente: ");
+		String nome = Teclado.lerTexto("Nome: ");
+		String email = Teclado.lerTexto("Email: ");
+		String telefone = Teclado.lerTexto("Telefone: ");
+		
+		String logradouro = Teclado.lerTexto("Logradouro: ");
+		String numero = Teclado.lerTexto("Numero: ");
+		String complemento = Teclado.lerTexto("Complemento: ");
+		String bairro = Teclado.lerTexto("Bairro: ");
+		String cidade = Teclado.lerTexto("Cidade: ");
+		String estado = Teclado.lerTexto("Estado: ");
+		String cep = Teclado.lerTexto("CEP: ");
+		
+		usuario = UsuarioDAO.inserir(login, senha, tipo);
+		
+		cliente = ClienteDAO.inserir(login, senha, tipo, codigoCliente, nome, email, telefone);
+		
+		Endereco endereco = EnderecoDAO.inserir(logradouro, numero, complemento, bairro, cidade, estado, cep,
+				codigoCliente);
+		
+		// Aqui acima o tipo recebeu valor zero, para no futuro,
+		// ocorrer uma associação zero para cliente e um para administrador.
+		
+		System.out.println("=================================================");
+		System.out.println("      Usuário Cadastrado Com Sucesso.            ");
+		System.out.println("=================================================");
+		System.out.println(cliente);
+		System.out.println(endereco);
+	}
+
 	public void efetuarLoginAdm() {
 		String login, senha;
 		login = Teclado.lerTexto("Digite o login: ");
@@ -207,7 +250,7 @@ public class InfoNote {
 			}
 		}
 	}
-
+	
 	public void areaAdministrativa() {
 		InfoNote info = new InfoNote();
 		efetuarLoginAdm();
@@ -244,48 +287,6 @@ public class InfoNote {
 	}
 
 
-
-	public void cadastrarCliente() {
-		System.out.println("=================================================");
-		System.out.println("      InfoNote - Cadastro de Usuários.           ");
-		System.out.println("=================================================");
-
-		String login = Teclado.lerTexto("login: ");
-		String senha = Teclado.lerTexto("Senha: ");
-		if (senha.equals("") || senha == null) {
-			senha = GerarSenha.gerarSenha();
-			System.out.println("Senha gerada: " + senha);
-		}
-		int tipo = 0; // por que todo cliente é tipo zero
-		String codigoCliente = Teclado.lerTexto("Codigo Cliente: ");
-		String nome = Teclado.lerTexto("Nome: ");
-		String email = Teclado.lerTexto("Email: ");
-		String telefone = Teclado.lerTexto("Telefone: ");
-
-		String logradouro = Teclado.lerTexto("Logradouro: ");
-		String numero = Teclado.lerTexto("Numero: ");
-		String complemento = Teclado.lerTexto("Complemento: ");
-		String bairro = Teclado.lerTexto("Bairro: ");
-		String cidade = Teclado.lerTexto("Cidade: ");
-		String estado = Teclado.lerTexto("Estado: ");
-		String cep = Teclado.lerTexto("CEP: ");
-
-		usuario = UsuarioDAO.inserir(login, senha, tipo);
-
-		cliente = ClienteDAO.inserir(login, senha, tipo, codigoCliente, nome, email, telefone);
-
-		Endereco endereco = EnderecoDAO.inserir(logradouro, numero, complemento, bairro, cidade, estado, cep,
-				codigoCliente);
-
-		// Aqui acima o tipo recebeu valor zero, para no futuro,
-		// ocorrer uma associação zero para cliente e um para administrador.
-
-		System.out.println("=================================================");
-		System.out.println("      Usuário Cadastrado Com Sucesso.            ");
-		System.out.println("=================================================");
-		System.out.println(cliente);
-		System.out.println(endereco);
-	}
 	
 	public void cadastrarNotebook() {
 		System.out.println("=================================");
