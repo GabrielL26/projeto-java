@@ -2,7 +2,7 @@ package model;
 
 public class Notebook {
 	
-	private int serialNote;
+	private String serialNote;
 	private String modelo;
 	private String descricao;
 	private int estoque;
@@ -10,10 +10,10 @@ public class Notebook {
 	private String figura;
 	private String dataCadastro;
 	
-	public int getserialNote() {
+	public String getserialNote() {
 		return serialNote;
 	}
-	public void setserialNote(int serialNote) {
+	public void setserialNote(String serialNote) {
 		this.serialNote = serialNote;
 	}
 	public String getModelo() {
@@ -59,7 +59,7 @@ public class Notebook {
 	}
 	
 	//Ajuda a construir e a setar os valores do OBJETO.
-	public Notebook(int serialNote, String modelo, String descricao, int estoque, double precoUnitario, String figura,
+	public Notebook(String serialNote, String modelo, String descricao, int estoque, double precoUnitario, String figura,
 			String dataCadastro) {
 		super();
 		this.serialNote = serialNote;

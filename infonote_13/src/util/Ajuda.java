@@ -11,6 +11,7 @@ public class Ajuda {
 	public Ajuda(String nomeArquivo) {
 		try {
 		// Abre o arquivo
+		
 		BufferedReader in = new BufferedReader(new FileReader(nomeArquivo));
 		// Variável para armazenar as linhas de texto do arquivo
 		String linha = "";
