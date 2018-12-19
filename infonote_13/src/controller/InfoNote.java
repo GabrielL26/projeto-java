@@ -88,7 +88,8 @@ public class InfoNote {
 				break;
 
 			case BUSCAR_NOTEBOOK:
-				info.buscarNotebook();
+				//info.buscarNotebook();
+				info.mostrarMenu();
 				break;
 
 			case INSERIR_NOTEBOOK:
@@ -307,6 +308,10 @@ public class InfoNote {
 	}
 	
 	public void buscarNotebook() {
+		
+	}
+	
+	private void mostrarNotebooks() {
 		Notebook[] notebooks = NotebookDAO.buscarTodos();
 
 		for (int i = 0; i < notebooks.length; i++) {
@@ -316,9 +321,6 @@ public class InfoNote {
 						+ "-----" + notebooks[i].getFigura()+ "-----" + notebooks[i].getDataCadastro());
 			}
 		}
-	}
-	
-	private void mostrarNotebooks() {
 			
 	}
 	
