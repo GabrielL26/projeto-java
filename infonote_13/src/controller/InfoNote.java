@@ -349,9 +349,9 @@ public class InfoNote {
 		System.out.println("        Excluir Notebook         ");
 		System.out.println("=================================");
 		
-		int id_notebook = Teclado.lerInt("Excluir Id_notebook: ");
+		String serialNote = Teclado.lerTexto("Excluir Id_notebook: ");
 		
-		NotebookDAO.excluir(id_notebook);
+		NotebookDAO.excluir(serialNote);
 		
 		System.out.println("Notebook apagado com sucesso");
 	}

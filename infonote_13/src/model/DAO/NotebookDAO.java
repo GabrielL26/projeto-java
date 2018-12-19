@@ -116,7 +116,7 @@ public class NotebookDAO {
 		return Notebooks;
 	}
 	
-	public static Notebook excluir(int id_notebook) {
+	public static Notebook excluir(String serialNote ) {
 		
 		Notebook Notebook = null;
 		NotebookDAO noteDAO = new NotebookDAO();
@@ -134,7 +134,7 @@ public class NotebookDAO {
 			// Preparar o comando para ser executado
 			PreparedStatement comando = con.prepareStatement(sql);
 			
-			comando.setInt(1, id_notebook);
+			comando.setString(1, serialNote);
 			comando.executeUpdate();
 			
 			// Comando executado
