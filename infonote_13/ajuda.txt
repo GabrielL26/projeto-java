@@ -1,7 +1,11 @@
 ==============================
 	Ajuda InfoNote	      
 ==============================
-url = jdbc:mysql://localhost:3306/infonote
-driver=com.mysql.jdbc.Driver
-login=root
-senha=alunolab
+1) Efetuar Login
+Para efetuar o login é necessário
+que você esteja cadastrado no sis-
+tema.
+2) Cadastrar Cliente
+Será necessário colocar todos os
+campos
+... continua ...
