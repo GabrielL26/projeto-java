@@ -161,8 +161,8 @@ public class InfoNote {
 
 		cliente = ClienteDAO.buscarPorLoginSenha(login, senha);
 
-		if (clienteGlobal != null) {
-			logado = clienteGlobal.validarLogin(login, senha);
+		if (cliente != null) {
+			logado = cliente.validarLogin(login, senha);
 			if (logado) {
 				System.out.println("Login efetuado com sucesso!");
 			} else {
