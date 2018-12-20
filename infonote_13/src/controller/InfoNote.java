@@ -139,7 +139,7 @@ public class InfoNote {
 				+ DateFormat.getTimeInstance().format(new Date()));
 
 		if (logado == true) {
-			System.out.println("Seja bem vindo, " + clienteGlobal.getNomeInvertido());
+			System.out.println("Seja bem vindo, " + cliente.getNomeInvertido());
 		}
 		System.out.println("=================================================");
 		System.out.println("1 - Login");
@@ -248,6 +248,7 @@ public class InfoNote {
 				System.out.println("Login efetuado com sucesso!");
 			} else {
 				System.out.println("Usuário ou senha inválido.");
+				System.exit(0);
 			}
 		}
 	}
