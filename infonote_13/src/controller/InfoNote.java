@@ -184,6 +184,7 @@ public class InfoNote {
 					break;
 				case 3:
 					System.out.println("Obrigado e volte sempre!");
+					System.exit(0);
 					break;
 				default:
 					System.out.println("Opção inválida");
@@ -279,6 +280,7 @@ public class InfoNote {
 				break;
 			case 5:
 				System.out.println("Saída do Sistema");
+				System.exit(0);
 				break;
 			default:
 				System.out.println("Opção inválida!");
