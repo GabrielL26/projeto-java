@@ -24,7 +24,7 @@ public class NotebookDAO {
 		senha = config.getSenha();
 	}
 	
-	public static Notebook inserir(String serialNote, String modelo, String descricao,
+	public static Notebook inserir(String serialnote, String modelo, String descricao,
 			int estoque, Double precoUnitario, String figura, String dataCadastro) {
 		
 		Notebook notebook = null;
@@ -32,7 +32,7 @@ public class NotebookDAO {
 		
 		try {
 			// Criação do insert
-			String sql = "insert into contato (serialNote, modelo, descricao, estoque, precoUnitario, figura, dataCadastro) values (?,?,?)";
+			String sql = "insert into notebook (serialnote, modelo, descricao, estoque, precoUnitario, figura, dataCadastro) values (?,?,?,?,?,?,?)";
 			
 			// Obter a conexao com o banco de dados
 			Conexao conex = new Conexao(noteDAO.url, noteDAO.driver, noteDAO.login, noteDAO.senha);
@@ -43,7 +43,7 @@ public class NotebookDAO {
 			// Preparar o comando para ser executado
 			PreparedStatement comando = con.prepareStatement(sql);
 			
-			comando.setString(1,serialNote);
+			comando.setString(1,serialnote);
 			comando.setString(2,modelo);
 			comando.setString(3,descricao);
 			comando.setInt(4,estoque);
@@ -57,7 +57,7 @@ public class NotebookDAO {
 		} catch(Exception e ) {
 			System.out.println(e.getMessage());
 		}
-		notebook = new Notebook (serialNote, modelo, descricao, estoque, 
+		notebook = new Notebook (serialnote, modelo, descricao, estoque, 
 				precoUnitario, figura, dataCadastro);
 		return notebook;
 	}
@@ -97,7 +97,7 @@ public class NotebookDAO {
 			int i = 0;
 			while (rs.next()) {
 				Notebooks[i++] = new Notebook(
-						rs.getString("serialNote"),
+						rs.getString("serialnote"),
 						rs.getString("modelo"),
 						rs.getString("descricao"),
 						rs.getInt("estoque"),
@@ -116,69 +116,58 @@ public class NotebookDAO {
 		return Notebooks;
 	}
 	
-	public static Notebook excluir(String serialNote ) {
-		
-		Notebook Notebook = null;
+	public static Notebook excluir(String serialnote){
+		Notebook notebook = null;
 		NotebookDAO noteDAO = new NotebookDAO();
-		
 		try {
 			// Criação do insert
-			String sql = "delete from Notebook where id =?";
-			
-			// Obter a conexao com o banco de dados
+			String sql = "delete from notebook where serialnote = ?";
+			// Obter a conexão com o banco de dados
 			Conexao conex = new Conexao(noteDAO.url, noteDAO.driver, noteDAO.login, noteDAO.senha);
-			
-			// Abrir a conexao
+			// Abrir a conexão
 			Connection con = conex.obterConexao();
-			
 			// Preparar o comando para ser executado
 			PreparedStatement comando = con.prepareStatement(sql);
-			
-			comando.setString(1, serialNote);
+			comando.setString(1,serialnote);
 			comando.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return notebook;
+	}		
+	
+	public static Notebook atualizar(String serialnote, String descricao, int estoque, double precoUnitario, String figura, String dataCadastro){
+		Notebook notebook = null;
+		NotebookDAO noteDAO = new NotebookDAO();
+		try {
+			// Criação do update
+			//exceto serialnote e modelo
+			String sql = "update notebook set "
+					+ " descricao = ?, estoque = ?, precoUnitario = ?, "
+					+ " figura = ?, dataCadastro = ? "
+					+ " where "
+					+ " serialnote = ? ";
+			// Obter a conexão com o banco de dados
+			Conexao conex = new Conexao(noteDAO.url, noteDAO.driver, noteDAO.login, noteDAO.senha);			
+			// Abrir a conexão
+			Connection con = conex.obterConexao();
+			// Preparar o comando para ser executado
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setString(1,descricao);
+			comando.setInt(2,estoque);
+			comando.setDouble(3,precoUnitario);
+			comando.setString(4,figura);
+			comando.setString(5,dataCadastro);
+			comando.setString(6,serialnote);
+				
 			
 			// Comando executado
 			comando.executeUpdate();
-	
-		} catch(Exception e ) {
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return Notebook;
-	}
-	
-	public static Notebook atualizar(int id_notebook, String descricao, int estoque, Double precoUnitario,
-			String figura, String dataCadastro) {
-		
-		Notebook Notebook = null;
-		NotebookDAO noteDAO = new NotebookDAO();
-		
-		try {
-			// Criação do insert
-			String sql = "update Notebook set mensagem = ? where id = ? ";
-			
-			// Obter a conexao com o banco de dados
-			Conexao conex = new Conexao(noteDAO.url, noteDAO.driver, noteDAO.login, noteDAO.senha);
-			
-			// Abrir a conexao
-			Connection con = conex.obterConexao();
-			
-			// Preparar o comando para ser executado
-			PreparedStatement comando = con.prepareStatement(sql);
-			
-			comando.setInt(1, id_notebook);
-			comando.setString(2, descricao);
-			comando.setInt(3, estoque);
-			comando.setDouble(4, precoUnitario);
-			comando.setString(5, figura);
-			comando.setString(6, dataCadastro);
-			
-			// Comando executado
-			comando.executeUpdate();
-	
-		} catch(Exception e ) {
-			System.out.println(e.getMessage());
-		}
-		return Notebook;
-	}
+		return notebook;
+	}	
 
 }

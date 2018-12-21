@@ -5,7 +5,7 @@ import java.util.Locale;
 
 public class Notebook {
 	 
-	private String serialNote;
+	private String serialnote;
 	private String modelo;
 	private String descricao;
 	private int estoque;
@@ -14,10 +14,10 @@ public class Notebook {
 	private String dataCadastro;
 	
 	public String getserialNote() {
-		return serialNote;
+		return serialnote;
 	}
 	public void setserialNote(String serialNote) {
-		this.serialNote = serialNote;
+		this.serialnote = serialNote;
 	}
 	public String getModelo() {
 		return modelo;
@@ -65,7 +65,7 @@ public class Notebook {
 	public Notebook(String serialNote, String modelo, String descricao, int estoque, double precoUnitario, String figura,
 			String dataCadastro) {
 		super();
-		this.serialNote = serialNote;
+		this.serialnote = serialNote;
 		this.modelo = modelo;
 		this.descricao = descricao;
 		this.estoque = estoque;
@@ -81,7 +81,7 @@ public class Notebook {
 		Locale local = new Locale("pt", "BR");
 		
 		retValue = "Informacoes sobre o Notebook: " + ENTER + 
-		"Numero do Notebook: " + serialNote + ENTER + 
+		"Numero do Notebook: " + serialnote + ENTER + 
 		"Modelo: " + modelo + ENTER + 
 		"Descricao: " + descricao + ENTER + 
 		"Estoque: " + estoque + ENTER +

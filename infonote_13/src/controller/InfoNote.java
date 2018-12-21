@@ -296,7 +296,7 @@ public class InfoNote {
 		System.out.println("        Cadastrar Notebook       ");
 		System.out.println("=================================");
 		
-		String serialNote = Teclado.lerTexto("Numero do Notebook: ");
+		String serialnote = Teclado.lerTexto("Numero de série: ");
 		String modelo = Teclado.lerTexto("Modelo: ");
 		String descricao = Teclado.lerTexto("Descrição: ");
 		int estoque = Teclado.lerInt("estoque: ");
@@ -304,7 +304,7 @@ public class InfoNote {
 		String figura = Teclado.lerTexto("Figura: ");
 		String dataCadastro = Teclado.lerTexto("Data do Cadastro: ");
 
-		Notebook notebook = NotebookDAO.inserir(serialNote, modelo, descricao, estoque, precoUnitario, figura, dataCadastro);
+		Notebook notebook = NotebookDAO.inserir(serialnote, modelo, descricao, estoque, precoUnitario, figura, dataCadastro);
 
 		System.out.println(notebook);
 	}
@@ -331,14 +331,14 @@ public class InfoNote {
 		System.out.println("         Editar Notebook         ");
 		System.out.println("=================================");
 		
-		int id_notebook = Teclado.lerInt("Editar Id_notebook: ");
+		String serialnote = Teclado.lerTexto("Editar numero de série: ");
 		String descricao = Teclado.lerTexto("Editar Descrição: ");
 		int estoque = Teclado.lerInt("Editar Estoque: ");
 		double precoUnitario = Teclado.lerDouble("Editar Preço Unitário: ");
 		String figura = Teclado.lerTexto("Editar Figura: ");
 		String dataCadastro = Teclado.lerTexto("Editar Data de Cadastro: ");
 		
-		NotebookDAO.atualizar(id_notebook, descricao, estoque, precoUnitario, figura, dataCadastro);
+		NotebookDAO.atualizar(serialnote, descricao, estoque, precoUnitario, figura, dataCadastro);
 		
 		System.out.println("Notebook editado com sucesso");
 		
@@ -353,7 +353,7 @@ public class InfoNote {
 		System.out.println("        Excluir Notebook         ");
 		System.out.println("=================================");
 		
-		String serialNote = Teclado.lerTexto("Excluir Id_notebook: ");
+		String serialNote = Teclado.lerTexto("Excluir numero de série: ");
 		
 		NotebookDAO.excluir(serialNote);
 		
@@ -362,7 +362,7 @@ public class InfoNote {
 
 	public void inserirNotebook() {
 		// Lê o notebook escolhido do teclado
-		String numeroNote = Teclado.lerTexto("Informe o número do notebook" + " para compra: ");
+		String numeroNote = Teclado.lerTexto("Informe o número de série" + " para compra: ");
 		// Cria pedido
 		if (pedido == null) {
 			pedido = new Pedido();
