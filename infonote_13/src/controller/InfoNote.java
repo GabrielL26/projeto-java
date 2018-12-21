@@ -27,12 +27,9 @@ public class InfoNote {
 	Cliente cliente; // não esquecer de dar o import neste objeto.
 	Notebook notebooks[] = new Notebook[10];
 	Pedido pedido;
-	private static Cliente clienteGlobal = null;
-	private static final int AREA_ADMINISTRATIVA = 9;
-	private static final int SAIR = 10;
-	boolean logado = false; // indica se o usuário está logado.
 	Usuario usuario;
 
+	boolean logado = false; // indica se o usuário está logado.
 	Configurador config;
 	Ajuda ajuda;
 
@@ -44,6 +41,8 @@ public class InfoNote {
 	private static final int VER_CARRINHO = 6;
 	private static final int EFETUAR_COMPRA = 7;
 	private static final int AJUDA = 8;
+	private static final int AREA_ADMINISTRATIVA = 9;
+	private static final int SAIR = 10;
 
 	public InfoNote() {
 		notebooks[0] = new Notebook("1", "Negativo N22BR", "CPU Intel Core 2 Duo, Memória 2 GB, HD 250 GB", 6, 1200.00,
